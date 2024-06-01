@@ -35,7 +35,7 @@ class Frame implements Serializable {
 
   function get_size():Int {
     return chunks.fold((chunk, result) -> result + chunk.size,
-      FrameHeader.BYTE_SIZE);
+      FrameHeader.FRAME_BYTE_SIZE);
   }
 
   /**
@@ -48,7 +48,7 @@ class Frame implements Serializable {
     var bi:BytesInput = new BytesInput(bytes);
     var frame = new Frame(ase);
 
-    frame.header = FrameHeader.fromBytes(bi.read(FrameHeader.BYTE_SIZE));
+    frame.header = FrameHeader.fromBytes(bi.read(FrameHeader.FRAME_BYTE_SIZE));
 
     var lastChunk:Chunk = null;
 

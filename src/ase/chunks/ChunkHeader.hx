@@ -6,7 +6,7 @@ import haxe.io.BytesInput;
 import haxe.io.BytesOutput;
 
 class ChunkHeader {
-  public static inline var BYTE_SIZE:Int = 6;
+  public static inline var CHUNK_BYTE_SIZE:Int = 6;
 
   public var size:Int = 0;
   public var type:ChunkType;

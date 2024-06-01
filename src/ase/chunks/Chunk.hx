@@ -16,7 +16,7 @@ class Chunk implements Serializable {
   public var size(get, never):Int;
 
   function get_size():Int {
-    return ChunkHeader.BYTE_SIZE + getSizeWithoutHeader();
+    return ChunkHeader.CHUNK_BYTE_SIZE + getSizeWithoutHeader();
   }
 
   function getSizeWithoutHeader():Int {
@@ -26,8 +26,8 @@ class Chunk implements Serializable {
   public static function fromBytes(bytes:Bytes):Chunk {
     var bi = new BytesInput(bytes);
 
-    var header:ChunkHeader = ChunkHeader.fromBytes(bi.read(ChunkHeader.BYTE_SIZE));
-    var chunkBytes:Bytes = bi.read(header.size - ChunkHeader.BYTE_SIZE);
+    var header:ChunkHeader = ChunkHeader.fromBytes(bi.read(ChunkHeader.CHUNK_BYTE_SIZE));
+    var chunkBytes:Bytes = bi.read(header.size - ChunkHeader.CHUNK_BYTE_SIZE);
 
     var chunk:Chunk = switch (cast(header.type, ChunkType)) {
       case CEL:

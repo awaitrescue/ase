@@ -6,7 +6,7 @@ import haxe.io.BytesInput;
 import haxe.io.BytesOutput;
 
 class FrameHeader implements Serializable {
-  public static final BYTE_SIZE:Int = 16;
+  public static final FRAME_BYTE_SIZE:Int = 16;
   public static final MAGIC:Int = 0xF1FA;
 
   public var size:Int = 0;
